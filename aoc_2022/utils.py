@@ -39,5 +39,9 @@ def _cache_input(year, day, inp):
     print("Done.")
 
 
-def lmap(function, iterable):
-    return list(map(function, iterable))
+def lmap(f, it):
+    return list(map(f, it))
+
+
+def dinvert(d):
+    return dict(map(reversed, d.items()))
