@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "aoc-2022"
+version = "0.1.0"
+description = "Solutions for Advent of Code 2022"
+authors = ["Emanuel Ferm <emanuel@eferm.com>"]
+readme = "README.md"
+packages = [{include = "aoc_2022"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.28.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.2.0"
+flake8 = "^6.0.0"
+black = "^22.12.0"
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+lines_after_imports = 2
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
