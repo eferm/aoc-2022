@@ -12,7 +12,7 @@ def get_input(year, day):
     inp = _get_cached_input(year, day)
     if inp:
         print(f"Found cached input for {year} day {day}.")
-        return inp.strip()
+        return inp.rstrip()
 
     print(f"Fetching input for {year} day {day}... ", end="")
     res = requests.get(
@@ -23,7 +23,7 @@ def get_input(year, day):
 
     print("Done.")
     _cache_input(year, day, res.text)
-    return res.text.strip()
+    return res.text.rstrip()
 
 
 def _get_cached_input(year, day):
@@ -43,6 +43,18 @@ def lmap(f, it):
     return list(map(f, it))
 
 
+def lfilter(f, it):
+    return list(filter(f, it))
+
+
+def lzip(*it):
+    return list(zip(*it))
+
+
+def lreversed(it):
+    return list(reversed(it))
+
+
 def dinvert(d):
     return dict(map(reversed, d.items()))
 
@@ -54,3 +66,8 @@ def compose(*fs):
         return arg
 
     return inner
+
+
+def printdict(d):
+    for k, v in d.items():
+        print(f"{k}: {v}")
