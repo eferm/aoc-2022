@@ -45,3 +45,12 @@ def lmap(f, it):
 
 def dinvert(d):
     return dict(map(reversed, d.items()))
+
+
+def compose(*fs):
+    def inner(arg):
+        for f in fs:
+            arg = f(arg)
+        return arg
+
+    return inner
