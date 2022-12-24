@@ -130,4 +130,4 @@ dmypy.json
 
 # project
 .vscode
-aoc_2022/data
+src/data
