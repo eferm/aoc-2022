@@ -34,18 +34,22 @@ def graph(log):
     return children, files
 
 
-def traverse(root):
-    total = 0
-    for c in graph[root]:
-        total += files[c] if c in files else traverse(c)
-    totals[root] = total
-    return total
+def dirsizes(root, children, files):
+    totals = dict()
+
+    def traverse(root):
+        total = 0
+        for c in children[root]:
+            total += files[c] if c in files else traverse(c)
+        totals[root] = total
+        return total
+
+    traverse(root)
+    return totals
 
 
 # part 1
-graph, files = graph(inp.split("\n"))
-totals = collections.defaultdict(int)
-traverse("/")
+totals = dirsizes("/", *graph(inp.split("\n")))
 print(sum(lfilter(lambda size: size < 100_000, totals.values())))
 
 # part 2
